@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="assets/js/morris/morris.js"></script>
+
+
+    <script src="assets/js/easypiechart.js"></script>
+    <script src="assets/js/easypiechart-data.js"></script>
+
+
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
+    <script src="assets/js/echarts.min.js"></script>
+    <script src="assets/js/china.js"></script>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><i class="fa fa-comments"></i> <strong>electricity</strong></a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+
+        </ul>
+    </nav>
+    <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <script></script>
+                <li>
+                    <a href="#"><i class="fa fa-dashboard"></i>系统统计<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="active-menu" href="index"><i class="fa fa-dashboard"></i>每日统计</a>
+                        </li>
+                        <li>
+                            <a href="table"><i class="fa fa-table"></i>数据展示</a>
+                        </li>
+                        <li>
+                            <a href="map"><i class="fa fa-edit"></i>地图展示</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--<li>-->
+                    <!--<a href="ui-elements.html"><i class="fa fa-desktop"></i>在线教育统计</a>-->
+                <!--</li>-->
+
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="main" style="width: 1100px;height:700px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /. WRAPPER  -->
+<!-- JS Scripts-->
+<script type="text/javascript">
+    productName = []
+    productNum = []
+    $.ajax({
+        type: "GET",
+        url: "/getCityName",   //请求发送到TestServlet处
+        dataType: "json",        //返回数据形式为json
+        async: false,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+        success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                productName.push(result[i]);
+                productNum.push(result[i]);
+            }
+        }
+    });
+
+    var optionMap = {
+        backgroundColor: '#FFFFFF',
+        title: {
+            text: '全国商品销量',
+            subtext: '',
+            x:'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+                //alert(params.name);
+                var res = params.name+'<br/>';
+                //alert(res);
+                var myseries = optionMap.series;
+
+                for (var i = 0; i < myseries.length; i++) {
+                    for(var j=0;j<myseries[i].data.length;j++){
+                        if(myseries[i].data[j].name==params.name){
+                            res+=myseries[i].name +' : '+myseries[i].data[j].value+'</br>';
+                        }
+                    }
+                }
+                //alert(res)
+                return res;
+            }
+        },
+        //左侧小导航图标
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'center',
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#5475f5', '#9feaa5', '#85daef','#74e2ca', '#e6ac53', '#9fb5ea']
+        },
+
+        //配置属性
+        series: [{
+            name: 'top1',
+            type: 'map',
+            mapType: 'china',
+            roam: true,
+            label: {
+                normal: {
+                    show: true  //省份名称
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:[
+                {name: '北京',value: "华为" },{name: '青岛',value: "三星"  },
+                {name: '上海',value: "小米"  },{name: '重庆',value: "一加" },
+                {name: '黑龙江',value: "荣耀" },{name: '江苏',value: "三星"  },
+                {name: '广东',value: "北纯" },{name: '四川',value: "一加"  },
+                {name: '青海',value: "黑莓" },{name: '河北',value: "苹果" }
+            ]
+        },{
+            name: '数量',
+            type: 'map',
+            mapType: 'china',
+            roam: true,
+            label: {
+                normal: {
+                    show: true  //省份名称
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:productNum
+
+        }]
+    };
+    var myChart = echarts.init(document.getElementById('main'));
+    myChart.setOption(optionMap);
+
+</script>
+
+</body>
+
+</html>

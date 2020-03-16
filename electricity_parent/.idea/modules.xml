@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dw-chart/dw-chart.iml" filepath="$PROJECT_DIR$/dw-chart/dw-chart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_areatop/electricity_areatop.iml" filepath="$PROJECT_DIR$/electricity_areatop/electricity_areatop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_canal/electricity_canal.iml" filepath="$PROJECT_DIR$/electricity_canal/electricity_canal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_common/electricity_common.iml" filepath="$PROJECT_DIR$/electricity_common/electricity_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_logger/electricity_logger.iml" filepath="$PROJECT_DIR$/electricity_logger/electricity_logger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_mock/electricity_mock.iml" filepath="$PROJECT_DIR$/electricity_mock/electricity_mock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_parent.iml" filepath="$PROJECT_DIR$/electricity_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_publisher/electricity_publisher.iml" filepath="$PROJECT_DIR$/electricity_publisher/electricity_publisher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/electricity_realtime/electricity_realtime.iml" filepath="$PROJECT_DIR$/electricity_realtime/electricity_realtime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elertricity_export_saleinfo/elertricity_export_saleinfo.iml" filepath="$PROJECT_DIR$/elertricity_export_saleinfo/elertricity_export_saleinfo.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dw-chart" />
+        <module name="electricity_areatop" />
+        <module name="electricity_canal" />
+        <module name="electricity_common" />
+        <module name="electricity_logger" />
+        <module name="electricity_mock" />
+        <module name="electricity_publisher" />
+        <module name="electricity_realtime" />
+        <module name="elertricity_export_saleinfo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dw-chart" target="1.8" />
+      <module name="electricity_areatop" target="1.8" />
+      <module name="electricity_canal" target="1.8" />
+      <module name="electricity_common" target="1.8" />
+      <module name="electricity_logger" target="1.8" />
+      <module name="electricity_mock" target="1.8" />
+      <module name="electricity_parent" target="1.8" />
+      <module name="electricity_publisher" target="1.8" />
+      <module name="electricity_realtime" target="1.8" />
+      <module name="elertricity_export_saleinfo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
